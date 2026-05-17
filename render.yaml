@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: shl-assessment-recommender
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+
+    # P2: Gunicorn + UvicornWorker replaces the single-process `python main.py`.
+    # --workers 4 runs 4 concurrent worker processes (rule of thumb: 2 × vCPUs + 1).
+    # --worker-class uvicorn.workers.UvicornWorker enables async/await inside each worker.
+    # $PORT is injected by Render at runtime.
+    startCommand: "gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT"
+
+    envVars:
+      - key: GROQ_API_KEY          # free at console.groq.com (primary)
+        sync: false
+      - key: OPENROUTER_API_KEY    # fallback — free at openrouter.ai
+        sync: false
+      - key: PORT
+        value: "8000"
+
+    healthCheckPath: /health
