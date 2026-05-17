@@ -7,7 +7,7 @@ Conversational API recommending SHL Individual Test Solutions.
 | Issue | Limitation | Improvement |
 |-------|----|----|
 | **RAG/FAISS** | Full 377-item catalog injected into every system prompt (~32k tokens/turn) | ✅ Agentic loop — LLM calls `search_catalog` tool → Python filters in-memory → results returned in `<search_results>` XML tags |
-| **Token usage** | ~32,000 tokens per turn, triggered HTTP 429 rate limits on free tier | ✅ ~300 tokens per turn (LLM only sees filtered results) |
+| **Token usage** | ~32,000 tokens per turn, triggered HTTP 429 rate limits on free tier | ✅ ~1400 tokens per turn (LLM only sees filtered results) |
 | **Hard constraints** | Missed duration/type filters even with full catalog | ✅ Python enforces exact logical filtering before LLM sees any data |
 | **Hallucinated metadata** | LLM could invent URLs or test type codes | ✅ Catalog ground-truth lookup on every submitted recommendation |
 | **Duplicate recommendations** | Not handled | ✅ Deduplication by name using a set before final output |
