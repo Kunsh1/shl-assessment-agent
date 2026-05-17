@@ -43,7 +43,7 @@ POST /chat  { messages: [{role, content}, ...] }
 
 ---
 
-## Tool Flow (typical happy path)
+## Tool Flow
 
 ```
 Turn 1: LLM emits search_catalog(test_type="K", keyword="java spring")
