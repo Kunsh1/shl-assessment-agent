@@ -36,7 +36,7 @@ POST /chat  { messages: [{role, content}, ...] }
 ```
 
 **Why agentic tool-based retrieval beats a static catalog-in-prompt:**
-- Token cost drops from ~32k → ~300 per turn — eliminates rate-limit crashes on free-tier providers
+- Token cost drops from ~32k → ~1400 per turn — eliminates rate-limit crashes on free-tier providers
 - Python enforces hard filters (duration cap, test_type, job_level) with 100% accuracy
 - LLM can issue multiple targeted searches in one turn (e.g., skills + cognitive + personality)
 - Catalog ground-truth lookup prevents hallucinated URLs and test-type codes
